@@ -1,0 +1,49 @@
+html,
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  background-color: rgb(245, 245, 245);
+
+
+}
+
+.container {
+  margin: 120px auto 0 auto;
+  max-width: 1200px;
+  padding: 0 32px;
+
+}
+
+
+.nav-container {
+  margin: auto;
+}
+
+.nav-container svg {
+  color: #fff;
+}
+
+a {
+  text-decoration: none;
+}
+
+.MuiDialogContent-root {
+  overflow-x: hidden;
+}
+
+@media(max-width: 600px) {
+  .MuiGrid-grid-xs-12:first-child {
+    order: 1
+  }
+
+  .container {
+    margin: 100px auto 0 auto;
+    max-width: 1200px;
+    padding: 0 5px;
+  }
+}
+
+.MuiGrid-spacing-xs-8>.MuiGrid-item {
+  padding: 0px 32px !important;
+}
