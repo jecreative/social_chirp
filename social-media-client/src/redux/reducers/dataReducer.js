@@ -7,13 +7,13 @@ import {
   POST_CHIRP,
   SET_CHIRP,
   SUBMIT_COMMENT,
-} from '../types';
+} from '../types'
 
 const initialState = {
   chirps: [],
   chirp: {},
   loading: false,
-};
+}
 
 export default function (state = initialState, action) {
   switch (action.type) {
@@ -21,52 +21,61 @@ export default function (state = initialState, action) {
       return {
         ...state,
         loading: true,
-      };
+      }
     case SET_CHIRPS:
       return {
         ...state,
         chirps: action.payload,
         loading: false,
-      };
+      }
     case SET_CHIRP:
       return {
         ...state,
         chirp: action.payload,
-      };
+      }
     case LIKE_CHIRP:
     case UNLIKE_CHIRP:
       let index = state.chirps.findIndex(
         (chirp) => chirp.chirpId === action.payload.chirpId
-      );
-      state.chirps[index] = action.payload;
+      )
+      state.chirps[index] = action.payload
       if (state.chirp.chirpId === action.payload.chirpId) {
-        state.chirp = action.payload;
+        state.chirp = action.payload
       }
       return {
         ...state,
-      };
+      }
     case DELETE_CHIRP:
       let indexDel = state.chirps.findIndex(
         (chirp) => chirp.chirpId === action.payload
-      );
-      state.chirps.splice(indexDel, 1);
+      )
+      state.chirps.splice(indexDel, 1)
       return {
         ...state,
-      };
+      }
     case POST_CHIRP:
       return {
         ...state,
         chirps: [action.payload, ...state.chirps],
-      };
+      }
     case SUBMIT_COMMENT:
+      let commentedOnIndex = state.chirps.findIndex(
+        (chirp) => chirp.chirpId === action.payload.chirpId
+      )
       return {
         ...state,
         chirp: {
           ...state.chirp,
           comments: [action.payload, ...state.chirp.comments],
+          commentCount: state.chirp.commentCount + 1,
         },
-      };
+        chirps: state.chirps.map((chirp, chirpsArrIndex) =>
+          chirpsArrIndex === commentedOnIndex
+            ? { ...chirp, commentCount: chirp.commentCount + 1 }
+            : chirp
+        ),
+      }
     default:
-      return state;
+      return state
   }
 }
