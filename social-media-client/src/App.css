@@ -4,17 +4,13 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   background-color: rgb(245, 245, 245);
-
-
 }
 
 .container {
   margin: 120px auto 0 auto;
   max-width: 1200px;
   padding: 0 32px;
-
 }
-
 
 .nav-container {
   margin: auto;
@@ -26,6 +22,11 @@ body {
 
 a {
   text-decoration: none;
+}
+
+.MuiGrid-container {
+  justify-content: center;
+
 }
 
 .MuiDialogContent-root {
